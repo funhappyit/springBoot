@@ -9,9 +9,11 @@ import javax.persistence.Id;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data //== getter, setter
 @AllArgsConstructor //== 생성자
+@NoArgsConstructor
 @Entity //==table
 public class User {
 	
@@ -19,6 +21,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	private String password;
 	private String account;
 	
 	private String email;
