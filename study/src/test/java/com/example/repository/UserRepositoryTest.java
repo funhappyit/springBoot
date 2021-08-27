@@ -27,7 +27,7 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Test
+
 	public void create() {
 		User user = new User();
 		user.setAccount("TestUser03");
@@ -40,12 +40,17 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		User newUser = userRepository.save(user);
 		System.out.println("newUser:"+newUser);
 	}
+	
 	@Test
+	@Transactional
 	public void read() {
-		Optional<User> user = userRepository.findById(2L);
-		user.ifPresent(selectUser->{
-			System.out.println("user: "+selectUser);
-			System.out.println("email: "+selectUser.getEmail());
+		Optional<User> user = userRepository.findById(1L);
+		
+		user.ifPresent(selectUser ->{
+			selectUser.getOrderDetailList().stream().forEach(detail ->{;
+				System.out.println("test-->"+detail.getItem());
+			});
+		
 		});
 		
 		
