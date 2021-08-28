@@ -1,45 +1,46 @@
 package com.example.model.entity;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data //== getter, setter
-@AllArgsConstructor //== 생성자
+
 @NoArgsConstructor
-@Entity //==table
-public class User {
-	
+@AllArgsConstructor
+@Data
+@Entity
+public class OrderGroup {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String account;
-	
-	private String password;
-	
 	private String status;
 	
-	private String email;
+	private String orderType; // 주문의 형태 - 일괄 / 개별
 	
-	private String phoneNumber;
+	private String revAddress;
 	
-	private LocalDateTime registeredAt;
+	private String revName;
 	
-	private LocalDateTime unregisteredAt;
+	private String paymentType; //카드/현금
 	
-	private LocalDateTime createdAt;
+	private BigDecimal totalPrice;
+	
+	private Integer totalQuantity;
+	
+	private LocalDateTime orderAt;
+	
+	private LocalDateTime arrivalDate;
+	
+	private LocalDateTime unregisterAt;
 	
 	private String createdBy;
 	

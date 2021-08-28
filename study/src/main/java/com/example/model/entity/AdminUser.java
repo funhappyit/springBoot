@@ -1,25 +1,21 @@
 package com.example.model.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data //== getter, setter
-@AllArgsConstructor //== 생성자
 @NoArgsConstructor
-@Entity //==table
-public class User {
+@AllArgsConstructor
+@Data
+@Entity
+public class AdminUser {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,9 +27,13 @@ public class User {
 	
 	private String status;
 	
-	private String email;
+	private String role;
 	
-	private String phoneNumber;
+	private LocalDateTime lastLoginAt;
+	
+	private int loginFailCount;
+	
+	private LocalDateTime passwordUpdatedAt;
 	
 	private LocalDateTime registeredAt;
 	

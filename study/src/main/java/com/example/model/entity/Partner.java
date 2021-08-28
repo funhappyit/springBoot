@@ -1,39 +1,38 @@
 package com.example.model.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data //== getter, setter
-@AllArgsConstructor //== 생성자
 @NoArgsConstructor
-@Entity //==table
-public class User {
-	
+@AllArgsConstructor
+@Data
+@Entity
+public class Partner {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	private String account;
-	
-	private String password;
+	private String name;
 	
 	private String status;
 	
-	private String email;
+	private String address;
 	
-	private String phoneNumber;
+	private String callCenter;
+	
+	private String partnerNumber;
+	
+	private String businessNumber;
+	
+	private String ceoName;
 	
 	private LocalDateTime registeredAt;
 	
@@ -45,6 +44,8 @@ public class User {
 	
 	private LocalDateTime updatedAt;
 	
-	private String updatedBy;
+	private LocalDateTime updatedBy;
+	
+	private Long categoryId;
 	
 }

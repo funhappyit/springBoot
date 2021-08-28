@@ -44,7 +44,10 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	@Test
 	@Transactional
 	public void read() {
-		Optional<User> user = userRepository.findById(1L);
+		
+		//select * from user where id = ?
+		//카멜 키로 구분 
+		Optional<User> user = userRepository.findByAccount("TestUser03");
 		
 		user.ifPresent(selectUser ->{
 			selectUser.getOrderDetailList().stream().forEach(detail ->{;
@@ -52,8 +55,6 @@ public class UserRepositoryTest extends StudyApplicationTests{
 			});
 		
 		});
-		
-		
 	}
 	@Test
 	public void update() {

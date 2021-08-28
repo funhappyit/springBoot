@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -27,6 +29,7 @@ public class ItemRepositoryTest extends StudyApplicationTests{
 		
 	}
 	@Test
+	@Transactional
 	public void read() {
 		Long id = 1L;
 		
