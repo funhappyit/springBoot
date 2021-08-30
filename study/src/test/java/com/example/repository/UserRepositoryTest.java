@@ -1,6 +1,7 @@
 package com.example.repository;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -29,32 +30,52 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	
 
 	public void create() {
-		User user = new User();
-		user.setAccount("TestUser03");
-		user.setPassword("1234");
-		user.setEmail("TestUser01@gmail.com");
-		user.setPhoneNumber("010-1111-1111");
-		user.setCreatedAt(LocalDateTime.now());
-		user.setCreatedBy("admin");
+		String account = "Test01";
+		String password = "TEST01";
+		String status = "REGISTERED";
+		String email = "Test01@gmail.com";
+		String phoneNumber = "010-1111-2222";
+		
+		LocalDateTime registeredAt = LocalDateTime.now();
+		LocalDateTime createdAt = LocalDateTime.now();
+		String createdBy = "AdminServer";
+		
+		
+		User user =  new User();
+		user.setAccount(account);
+		user.setPassword(password);
+		user.setStatus(status);
+		user.setEmail(email);
+		user.setPhoneNumber(phoneNumber);
+		user.setRegisteredAt(registeredAt);
+		user.setCreatedAt(createdAt);
+		user.setCreatedBy(createdBy);
 		
 		User newUser = userRepository.save(user);
-		System.out.println("newUser:"+newUser);
+		
+		assertNotNull(newUser);
+		
 	}
 	
 	@Test
 	@Transactional
 	public void read() {
 		
+		User user = userRepository.findFirstByphoneNumberOrderByIdDesc("010-1111-2222");
+		assertNotNull(user);
 		//select * from user where id = ?
 		//카멜 키로 구분 
+		/*
 		Optional<User> user = userRepository.findByAccount("TestUser03");
 		
 		user.ifPresent(selectUser ->{
 			selectUser.getOrderDetailList().stream().forEach(detail ->{;
 				System.out.println("test-->"+detail.getItem());
 			});
-		
 		});
+		*/
+		
+		
 	}
 	@Test
 	public void update() {

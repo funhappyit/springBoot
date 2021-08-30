@@ -11,6 +11,7 @@ import com.example.model.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
+	User findFirstByphoneNumberOrderByIdDesc(String phoneNumber);
 
 	/*
 	//select * from user where account = ? << test03, test04
