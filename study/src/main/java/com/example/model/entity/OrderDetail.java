@@ -36,7 +36,7 @@ public class OrderDetail {
 	
 	private BigDecimal totalPrice;
 	
-	private String createdAt;
+	private LocalDateTime createdAt;
 	
 	private String createdBy;
 	
@@ -48,9 +48,9 @@ public class OrderDetail {
 	
 	private Long itemId;
 	
-	private String userId;
+	//private Long orderGroupId;
 	
-	private LocalDateTime orderAt;
+//	private LocalDateTime orderAt;
 	
 	/*
 	//N:1
