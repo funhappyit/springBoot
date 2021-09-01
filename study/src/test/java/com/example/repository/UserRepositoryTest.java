@@ -15,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 
 import com.example.StudyApplicationTests;
+import com.example.model.entity.OrderDetail;
+import com.example.model.entity.OrderGroup;
 import com.example.model.entity.User;
 
 
@@ -61,8 +63,35 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	@Transactional
 	public void read() {
 		
-		User user = userRepository.findFirstByphoneNumberOrderByIdDesc("010-1111-2222");
-		assertNotNull(user);
+		User user = userRepository.findFirstByphoneNumberOrderByIdDesc("010-1111-0001");
+		if(user != null) {
+			user.getOrderGroupList().stream().forEach(OrderGroup->{
+				System.out.println("-------------주문묶음-------------");
+				System.out.println("수령인: "+OrderGroup.getRevName());
+				System.out.println("수령지: "+OrderGroup.getRevAddress());
+				System.out.println("총금액: "+OrderGroup.getTotalPrice());
+				System.out.println("총수량: "+OrderGroup.getTotalQuantity());
+				System.out.println("-------------주문상세-------------");
+				OrderGroup.getOrderDetailList().forEach(orderDetail -> {
+					System.out.println("파트너사 이름 : "+orderDetail.getItem().getPartner().getName());
+					System.out.println("파트너사 카테고리 : "+orderDetail.getItem().getPartner().getCategory().getTitle());
+					System.out.println("주문 상품: "+orderDetail.getItem().getName());
+					System.out.println("고객센터 번호: "+orderDetail.getItem().getPartner().getCallCenter());
+					System.out.println("주문의 상태 : "+orderDetail.getStatus());
+					System.out.println("도착예정일자 : "+orderDetail.getArrivalDate());
+					
+					
+					
+					
+					
+				});
+				
+			});
+		}
+		
+		
+		
+		//assertNotNull(user);
 		//select * from user where id = ?
 		//카멜 키로 구분 
 		/*

@@ -14,11 +14,13 @@ import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Data //== getter, setter
 @AllArgsConstructor //== 생성자
 @NoArgsConstructor
 @Entity //==table
+@ToString(exclude = {"orderGroup"})
 public class User {
 	
 	@Id
@@ -47,6 +49,9 @@ public class User {
 	
 	private String updatedBy;
 	
+	//User 1: N  OrderGroup
 	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+	private List<OrderGroup> orderGroupList;
 	
 }

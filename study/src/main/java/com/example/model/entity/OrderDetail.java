@@ -22,6 +22,7 @@ import lombok.ToString;
 @AllArgsConstructor
 @Entity
 //@ToString(exclude = {"user","item"})
+@ToString(exclude= {"orderGroup","item"})
 public class OrderDetail {
 	
 	@Id
@@ -43,10 +44,13 @@ public class OrderDetail {
 	private LocalDateTime updatedAt;
 	
 	private String updatedBy;
+
+	//OrderDetail N : 1 Item
+	@ManyToOne
+	private Item item;
 	
-	private Long orderGroupId;
-	
-	private Long itemId;
+	@ManyToOne
+	private OrderGroup orderGroup;
 	
 	//private Long orderGroupId;
 	
