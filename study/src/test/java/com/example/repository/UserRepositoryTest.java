@@ -30,17 +30,19 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	@Autowired
 	private UserRepository userRepository;
 	
-
+	@Test
 	public void create() {
-		String account = "Test01";
-		String password = "TEST01";
+		String account = "Test03";
+		String password = "TEST03";
 		String status = "REGISTERED";
 		String email = "Test01@gmail.com";
-		String phoneNumber = "010-1111-2222";
+		String phoneNumber = "010-1111-3333";
 		
 		LocalDateTime registeredAt = LocalDateTime.now();
 		LocalDateTime createdAt = LocalDateTime.now();
 		String createdBy = "AdminServer";
+		
+	
 		
 		
 		User user =  new User();
@@ -50,8 +52,16 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		user.setEmail(email);
 		user.setPhoneNumber(phoneNumber);
 		user.setRegisteredAt(registeredAt);
-		user.setCreatedAt(createdAt);
-		user.setCreatedBy(createdBy);
+	//	user.setCreatedAt(createdAt);
+	//	user.setCreatedBy(createdBy);
+		
+		//객체를 만들때는 builder 패턴 사용
+		User u = User.builder()
+				.account(account)
+				.password(password)
+				.status(status)
+				.email(email)
+				.build();
 		
 		User newUser = userRepository.save(user);
 		
@@ -64,6 +74,17 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	public void read() {
 		
 		User user = userRepository.findFirstByphoneNumberOrderByIdDesc("010-1111-0001");
+		
+		/*
+		객체를 update 할때에는 chain 패턴 사용 
+		user
+		.setEmail("")
+		.setPhoneNumber("")
+		.setStatus("");
+		
+		User u = new User().setAccount("").setEmail("").setPassword("");
+		*/
+		
 		if(user != null) {
 			user.getOrderGroupList().stream().forEach(OrderGroup->{
 				System.out.println("-------------주문묶음-------------");
@@ -79,10 +100,6 @@ public class UserRepositoryTest extends StudyApplicationTests{
 					System.out.println("고객센터 번호: "+orderDetail.getItem().getPartner().getCallCenter());
 					System.out.println("주문의 상태 : "+orderDetail.getStatus());
 					System.out.println("도착예정일자 : "+orderDetail.getArrivalDate());
-					
-					
-					
-					
 					
 				});
 				
