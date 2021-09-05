@@ -46,14 +46,12 @@ public class Header<T> {
 	}
 	
 	//ERROR
-		public static <T> Header<T> ERROR(String description){
-			return (Header<T>)Header.builder()
-					.transactionTime(LocalDateTime.now())
-					.resultCode("OK")
-					.description("OK")
-					.description(description)
-					.build();
+	public static <T> Header<T> ERROR(String description){
+		return (Header<T>)Header.builder()
+				.transactionTime(LocalDateTime.now())
+				.resultCode("ERROR")
+				.description("ERROR")
+				.description(description)
+				.build();
 		}
-	
-	
 }
