@@ -14,6 +14,7 @@ import com.example.controller.ifs.CrudInterface;
 import com.example.model.network.Header;
 import com.example.model.network.request.ItemApiRequest;
 import com.example.model.network.response.ItemApiResponse;
+import com.example.repository.ItemRepository;
 import com.example.service.ItemApiLogicService;
 
 @RestController
@@ -32,7 +33,8 @@ public class ItemApiController implements CrudInterface<ItemApiRequest, ItemApiR
 	@Override
 	@GetMapping("{id}") // /api/item/1 ... 1000
 	public Header<ItemApiResponse> read(@PathVariable Long id) {
-		return null;
+		
+		return itemApiLogicService.read(id);
 	}
 
 	@Override
