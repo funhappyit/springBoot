@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.controller.ifs.CrudInterface;
 import com.example.model.entity.User;
+import com.example.model.enumclass.UserStatus;
 import com.example.model.network.Header;
 import com.example.model.network.request.UserApiRequest;
 import com.example.model.network.response.UserApiResponse;
@@ -33,7 +34,7 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 		User user = User.builder()
 				.account(userApiRequest.getAccount())
 				.password(userApiRequest.getPassword())
-				.status("REGISTERED")
+				.status(UserStatus.REGISTERED)
 				.phoneNumber(userApiRequest.getPhoneNumber())
 				.email(userApiRequest.getEmail())
 				.registeredAt(LocalDateTime.now())
@@ -80,7 +81,7 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 			user.setAccount(userApiRequest.getAccount())
 				.setPassword(userApiRequest.getPassword())
 				.setPhoneNumber(userApiRequest.getPhoneNumber())
-				.setStatus(userApiRequest.getStatus())
+				.setStatus(userApiRequest.getStatus()) // UNREGISTER
 				.setEmail(userApiRequest.getEmail())
 				.setRegisteredAt(userApiRequest.getRegisteredAt())
 				.setUnregisteredAt(userApiRequest.getUnregisteredAt());
