@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.controller.CrudController;
 import com.example.controller.ifs.CrudInterface;
+import com.example.model.entity.Item;
 import com.example.model.network.Header;
 import com.example.model.network.request.ItemApiRequest;
 import com.example.model.network.response.ItemApiResponse;
@@ -22,14 +23,14 @@ import com.example.service.ItemApiLogicService;
 
 @RestController
 @RequestMapping("/api/item")
-public class ItemApiController extends CrudController<ItemApiRequest, ItemApiResponse>{
+public class ItemApiController extends CrudController<ItemApiRequest, ItemApiResponse, Item>{
 	
-	@Autowired
-	private ItemApiLogicService itemApiLogicService;
-	
-	@PostConstruct
-	public void init() {
-		this.baseService = itemApiLogicService;
-	}
+//	@Autowired
+//	private ItemApiLogicService itemApiLogicService;
+//	
+//	@PostConstruct
+//	public void init() {
+//		this.baseService = itemApiLogicService;
+//	}
 	
 }

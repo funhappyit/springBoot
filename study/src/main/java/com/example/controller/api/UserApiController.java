@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.controller.CrudController;
 import com.example.controller.ifs.CrudInterface;
+import com.example.model.entity.User;
 import com.example.model.network.Header;
 import com.example.model.network.request.OrderGroupApiRequest;
 import com.example.model.network.request.UserApiRequest;
@@ -26,14 +27,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
 @RequestMapping("/api/user")
-public class UserApiController extends CrudController<UserApiRequest, UserApiResponse>{
+public class UserApiController extends CrudController<UserApiRequest, UserApiResponse,User>{
 	
-	@Autowired
-	private UserApiLogicService userApiLogicService;
-	
-	@PostConstruct
-	public void init() {
-		this.baseService = userApiLogicService;
-	}
+//	@Autowired
+//	private UserApiLogicService userApiLogicService;
+//	
+//	@PostConstruct
+//	public void init() {
+//		this.baseService = userApiLogicService;
+//	}
 	
 }
