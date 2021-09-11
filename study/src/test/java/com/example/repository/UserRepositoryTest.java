@@ -18,6 +18,7 @@ import com.example.StudyApplicationTests;
 import com.example.model.entity.OrderDetail;
 import com.example.model.entity.OrderGroup;
 import com.example.model.entity.User;
+import com.example.model.enumclass.UserStatus;
 
 
 
@@ -34,7 +35,7 @@ public class UserRepositoryTest extends StudyApplicationTests{
 	public void create() {
 		String account = "Test03";
 		String password = "TEST03";
-		String status = "REGISTERED";
+		UserStatus status = UserStatus.REGISTERED;
 		String email = "Test01@gmail.com";
 		String phoneNumber = "010-1111-3333";
 		
@@ -48,7 +49,7 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		User user =  new User();
 		user.setAccount(account);
 		user.setPassword(password);
-		//user.setStatus(status);
+		user.setStatus(status);
 		user.setEmail(email);
 		user.setPhoneNumber(phoneNumber);
 		user.setRegisteredAt(registeredAt);
@@ -59,7 +60,7 @@ public class UserRepositoryTest extends StudyApplicationTests{
 		User u = User.builder()
 				.account(account)
 				.password(password)
-				//.status(status)
+				.status(status)
 				.email(email)
 				.build();
 		

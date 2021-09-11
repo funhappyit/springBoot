@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.example.StudyApplicationTests;
 import com.example.model.entity.Item;
+import com.example.model.enumclass.ItemStatus;
 import com.example.model.enumclass.UserStatus;
 
 public class ItemRepositoryTest extends StudyApplicationTests{
@@ -22,7 +23,7 @@ public class ItemRepositoryTest extends StudyApplicationTests{
 	@Test
 	public void create() {
 		Item item = new Item();
-	//	item.setStatus(UserStatus.REGISTERED);
+		item.setStatus(ItemStatus.UNREGISTERED);
 		item.setName("삼성 노트북");
 		item.setTitle("삼성 노트북 A100");
 		item.setContent("2019년형 노트북 입니다.");
