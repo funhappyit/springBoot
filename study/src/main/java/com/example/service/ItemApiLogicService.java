@@ -82,7 +82,7 @@ public class ItemApiLogicService extends BaseService<ItemApiRequest, ItemApiResp
 	}
 	
 	
-	private Header<ItemApiResponse> response(Item item){
+	public Header<ItemApiResponse> response(Item item){
 		/*
 		 title로 가져오는것
 		 String statusTitle = item.getStatus().getTitle(); 

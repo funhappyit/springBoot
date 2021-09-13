@@ -27,8 +27,8 @@ import com.example.model.network.request.OrderGroupApiRequest;
 import com.example.model.network.request.UserApiRequest;
 import com.example.model.network.response.OrderGroupApiResponse;
 import com.example.model.network.response.UserApiResponse;
+import com.example.model.network.response.UserOrderInfoApiResponse;
 import com.example.service.UserApiLogicService;
-
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -44,6 +44,10 @@ public class UserApiController extends CrudController<UserApiRequest, UserApiRes
 //	public void init() {
 //		this.baseService = userApiLogicService;
 //	}
+	@GetMapping("/{id}/orderInfo")
+	public Header<UserOrderInfoApiResponse> orderInfo(@PathVariable Long id){
+		return userApiLogicService.orderInfo(id);
+	}
 	
 	@GetMapping("")
 	public Header<List<UserApiResponse>> search(@PageableDefault(sort = "id",direction = Sort.Direction.DESC, size = 10)Pageable pageable){

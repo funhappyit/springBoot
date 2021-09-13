@@ -2,6 +2,7 @@ package com.example.model.network.response;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import com.example.model.enumclass.OrderType;
 
@@ -37,4 +38,6 @@ public class OrderGroupApiResponse {
 	private LocalDateTime arrivalDate;
 	
 	private Long userId;
+	
+	private List<ItemApiResponse> itemApiResponseList;
 }
